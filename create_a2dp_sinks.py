@@ -22,6 +22,7 @@ def add_bluetooth_audio_source(path, retry_timeout=1, retries=0, give_up=3):
         return
     cmd = 'pactl load-module module-loopback source_dont_move=yes source=bluez_source.%s.a2dp_source sink=%s'
     bt_addr = extract_bt_addr(path)
+    print "Found: %s attempting to create interface" % bt_addr
     if os.system(cmd % (bt_addr, expected_sink)) != 0:
         print "Failed to add loopback for %s. Waiting: %ds" % (bt_addr, retry_timeout)
         time.sleep(retry_timeout)
@@ -51,10 +52,12 @@ def property_changed(interface, changed, invalidated, path=None):
         remove_bluetooth_audio_source(path)
 
 if __name__ == '__main__':
+    print "Starting to automatically monitor for BT Audio sources"
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
 
     bus = dbus.SystemBus()
 
+    print "Automatically creating a2dp sinks from BT Audio sources"
     bus.add_signal_receiver(
         property_changed,
         bus_name="org.bluez",
