@@ -4,6 +4,7 @@ import gobject
 import dbus
 import dbus.mainloop.glib
 import os
+from systemd import journal
 
 
 def extract_br_add_as_mac(path):
@@ -16,7 +17,7 @@ def interfaces_added(path, interfaces):
         os.system('echo "default-agent\n connect %s\n quit" | bluetoothctl' % bt_mac)
         os.system('echo "default-agent\n trust %s\n quit" | bluetoothctl' % bt_mac)
     except Exception as e:
-        print e
+        journal.write(str(e))
 
 
 if __name__ == '__main__':

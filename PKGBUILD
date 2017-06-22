@@ -11,10 +11,10 @@ provides=('create_a2dp_sinks.py', 'sync_interfaces.py', )
 install=
 changelog=
 source=(create_a2dp_sinks.py create_a2dp_sinks.service sync_interfaces.py sync_interfaces.service)
-md5sums=('c79ee84cbefc43c447a80997a7ee9ac8'
-         '7d3f0aa1390cabf7cfb8663d890858f6'
-         '42b9613f9baeb44b52aa04e669f8a04e'
-         'be5e732707ddc4b86a94da2bcb43a2ae')
+md5sums=('0c27e7e36ef6e87b5e7023837c031bf2'
+         '0a514da6431f5bff0add3d51584fe559'
+         'b04583dc78ed09f4212c5b326d4d88a6'
+         '717e70e69b61ed9747a52d5012d7a124')
 
 package() {
   install -D create_a2dp_sinks.py "$pkgdir/usr/bin/create_a2dp_sinks.py" || return 1
