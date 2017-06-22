@@ -1,0 +1,10 @@
+[Unit]
+Description=Automatic A2DP sink/source set up
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/create_a2dp_sinks.py
+Restart=always
+
+[Install]
+WantedBy=default.target

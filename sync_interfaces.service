@@ -1,0 +1,10 @@
+[Unit]
+Description=Automatically sync BT devices
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/sync_interfaces.py
+Restart=always
+
+[Install]
+WantedBy=default.target
