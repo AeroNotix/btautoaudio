@@ -7,18 +7,18 @@ arch=('any')
 url=""
 license=('BSD')
 depends=('python2')
-provides=('create_a2dp_sinks.py', 'sync_interfaces.py', )
+provides=('create_a2dp_sinks.py', 'btautoaudio_dbus_agent.py')
 install=
 changelog=
-source=(create_a2dp_sinks.py create_a2dp_sinks.service sync_interfaces.py sync_interfaces.service)
-md5sums=('0c27e7e36ef6e87b5e7023837c031bf2'
+source=(create_a2dp_sinks.py create_a2dp_sinks.service btautoaudio_dbus_agent.py btautoaudio_dbus_agent.service)
+md5sums=('9fa6fee7e110c7b74460a7d1474bacd5'
          '0a514da6431f5bff0add3d51584fe559'
-         'b04583dc78ed09f4212c5b326d4d88a6'
-         '717e70e69b61ed9747a52d5012d7a124')
+         'b74a74025f39c8368010f02578a12bab'
+         '8a95defc4e174f0cc66b75ea1bd33a17')
 
 package() {
   install -D create_a2dp_sinks.py "$pkgdir/usr/bin/create_a2dp_sinks.py" || return 1
-  install -D create_a2dp_sinks.service "$pkgdir/usr/lib/systemd/system/create_a2dp_sinks.service" || return 1
-  install -D sync_interfaces.py "$pkgdir/usr/bin/sync_interfaces.py" || return 1
-  install -D sync_interfaces.service "$pkgdir/usr/lib/systemd/system/sync_interfaces.service" || return 1
+  install -D create_a2dp_sinks.service "$pkgdir/usr/lib/systemd/user/create_a2dp_sinks.service" || return 1
+  install -D btautoaudio_dbus_agent.py "$pkgdir/usr/bin/btautoaudio_dbus_agent.py" || return 1
+  install -D btautoaudio_dbus_agent.service "$pkgdir/usr/lib/systemd/user/btautoaudio_dbus_agent.service" || return 1
 }

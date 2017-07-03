@@ -1,0 +1,10 @@
+[Unit]
+Description=Bluetooth agent for automatic pairing and trusting
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/btautoaudio_dbus_agent.py
+Restart=always
+
+[Install]
+WantedBy=default.target
